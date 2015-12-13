@@ -1,6 +1,8 @@
 package com.zooplus.challange;
 
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -25,10 +27,11 @@ public class ProjectLoader extends HttpServlet {
 			e.printStackTrace();
 		}
 		DataManager.getInstance().createAdmin();
-		
+
 	}
 
 	void init(String configFile) throws Exception {
-		PropertiesUtils.init(new PropertyFileUtils(new File(this.getServletContext().getRealPath(configFile))));
+		InputStream stream = this.getServletContext().getResourceAsStream(configFile);
+		PropertiesUtils.init(new PropertyFileUtils(stream));
 	}
 }
