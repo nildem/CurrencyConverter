@@ -96,7 +96,7 @@
 <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script>
 		$(function() {
-			$("#currentDate").datepicker();
+			$("#currentDate").datepicker({ dateFormat: 'dd/mm/yy' });
 		});
 		$(document).ready(function() {
 			$('#currencyTable').DataTable();

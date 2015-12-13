@@ -1,15 +1,12 @@
 package com.zooplus.challange;
 
-import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import com.zooplus.challange.hibernate.DataManager;
-import com.zooplus.challange.property.DateTimeUtils;
 import com.zooplus.challange.property.PropertiesUtils;
 import com.zooplus.challange.property.PropertyFileUtils;
 
@@ -32,6 +29,8 @@ public class ProjectLoader extends HttpServlet {
 
 	void init(String configFile) throws Exception {
 		InputStream stream = this.getServletContext().getResourceAsStream(configFile);
+		if (stream == null)
+			System.out.println(configFile + " cannot be read to load properties");
 		PropertiesUtils.init(new PropertyFileUtils(stream));
 	}
 }

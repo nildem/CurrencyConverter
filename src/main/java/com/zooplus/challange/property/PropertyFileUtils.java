@@ -126,6 +126,8 @@ public class PropertyFileUtils implements IPropertyUtil {
 	}
 
 	public PropertyHolder getPropertyInstance(String key) {
+		if (propertiesMap == null)
+			return null;
 		PropertyHolder p = propertiesMap.get(key);
 		if (p == null || !dateControl(p)) {
 			return null;
